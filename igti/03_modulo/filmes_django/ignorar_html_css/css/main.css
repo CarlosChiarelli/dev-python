@@ -1,0 +1,19 @@
+tr {
+  background-color: yellow;
+}
+
+/* div{
+  text-align: center;
+} */
+
+#titulo {
+  text-align: center;
+  background-color: pink;
+  font-size: 30px;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.erro {
+  color: red;
+  }
