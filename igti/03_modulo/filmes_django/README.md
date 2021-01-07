@@ -4,7 +4,7 @@ Projeto de uma aplicação web que cadastro e visualiza filmes.
 
 ## 0) Ativar ambiente virtual
 
-* source .venv/bin/activate
+```source .venv/bin/activate```
 
 ## 1) Iniciando o projeto
 
