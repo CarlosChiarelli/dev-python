@@ -4,11 +4,11 @@ Projeto de uma aplicação web que cadastro e visualiza filmes.
 
 ## 0) Ativar ambiente virtual
 
-```source .venv/bin/activate```
+* ```source .venv/bin/activate```
 
 ## 1) Iniciando o projeto
 
-* criando projeto (aplicação base): django-admin startproject auctusflixweb
+* criando projeto (aplicação base): ```django-admin startproject auctusflixweb```
 
 * cd auctusflixweb
 
