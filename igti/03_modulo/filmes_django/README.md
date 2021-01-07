@@ -41,7 +41,24 @@ Dentro do auctusflixweb/settings.py é necessário dizer quais aplicações est�
 * incluir no arquivo: ```INSTALLED_APPS = ['principal']```
 
 
+# 3) HTML e CSS
 
+A grosso modo podemos ver uma aplicação web como um corpo humano:
+
+* HTML - esqueleto (estrutura)
+* Django - músculos (movimento)
+* CSS - pele (beleza)
+
+Este tópico é adicionado para completar o projeto.
+
+Será criado um diretório na raiz para alguns testes e anotações que não farão parte da aplicação em sí.
+
+## 3.1) Estrutura HTML
+
+HTML é basicamente dividido em:
+
+* head - partes que o usuário não vê
+* body - partes que o usuário vê e interage
 
 ## Versão python
 
