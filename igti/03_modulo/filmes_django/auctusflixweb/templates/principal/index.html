@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- adicionado para carregar o css -->
+{% load static %}
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>AUCTUS.ai.Flix</title>
+  <!-- adicionado para encontrar css -->
+  <link href="{% static 'css/principal.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <!-- Aqui vai estar o menu utilizando meta-linguagem. -->
+  {% include "../menu.html" %}
+
+  <main>
+    <!-- Aqui seria apenas o AUCTUSFlix. h1 h2 h3 definem tamanho título -->
+    <h1 class="titulo">AUCTUS.ai.Flix</h1>
+  </main>
+
+<body>
+
+
+<html>
