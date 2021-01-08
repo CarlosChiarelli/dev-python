@@ -1,0 +1,28 @@
+ul {
+  /* tipo de lista */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #6ac6f5;
+}
+
+li {
+  float: left;
+}
+
+/* quero mexer apenas nos a's (links) dentro de li */
+li a {
+  display: block; /* é para utilizar todo espçao do bloco */
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* altera o css (botão) quando cursos estiver em cima */
+li a:hover{
+  font-weight: bolder;
+  background: #3377aa;
+  color: white;
+}

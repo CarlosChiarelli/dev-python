@@ -1,0 +1,7 @@
+.titulo{
+  text-align: center;
+  font-size: 40px;
+  /* primeiro é esquerda/diretia e segundo é top/bottom */
+  padding: 50px 50px;
+  font-family: sans-serif;
+}
