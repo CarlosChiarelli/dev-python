@@ -116,7 +116,7 @@ STATICFILES_DIRS = [
 ]
 ```
 
-## 5) Criar templates (css)
+## 5) Criar templates e css
 
 Vamos criar os templates separados para cada módulo (principal, gêneros e séries) do projeto.
 
