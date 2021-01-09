@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-br">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>AUCTUS.ai.Flix</title>
+  <link href="{% static 'css/crud.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  {% include "../menu.html" %}
+
+  <main>
+    <div class="conteiner">
+
+      <div>
+        <!-- mostro a tabela só se o gênero records (gravados) existir -->
+        {% if generos_records %}
+        <table>
+          <thead>
+            <tr>
+              <!-- Será o cabeçalho da tabela -->
+              <th>Gêneros</th>
+              <th>Clique para alterar</th>
+              <th>Clique para excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- serão os registros inseridos (linhas) -->
+            {% for genero in generos_records %}
+              <tr>
+                <td>{{ genero.descricao }}</td>
+                <td><button class="list-button editar-button">Alterar</button></td>
+                <td><button class="list-button apagar-button" onclick="deleteItem({{ genero.id }})">Excluir</button></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <!-- senão existir dados não mostra a tabela -->
+          <p>Nenhum dado cadastrado.</p>
+        {% endif %}
+      </div>
+
+      <div>
+        <form onsubmit="/genero" id="form-genero" method="post">
+          <!-- vai buscar a informação que está em form e joga aqui dentro
+          assim vários campos serão criados automaticamente  -->
+          {{form}}
+
+          <!-- adicionando token -->
+          {% csrf_token %}
+
+          <!-- mas é necessário criar o último campo de input -->
+          <input type="submit" id="submit-button" class="submit-button" value="Enviar"/>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Esse trecho é o JavaScript para fazer a deleção
+    // Realiza o delete pelo ID do elemento (registro/linha)
+    function deleteItem(id){
+      // dentro do código no Browser (F12) é possível
+      // encontrar na tag for o elemento pelo name inseirdo abaixo
+      const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+      const request = new Request(
+        // esse caminho não existe quando adicionado aqui será criado
+        "/genero/delete/"+id,
+        {headers:{'X-CSRFToken':csrftoken}}
+      )
+      fetch(request, {
+        method:'DELETE',
+        mode: 'same-origin'
+      }).then(
+        function (response){
+          if (response.status===500){
+            alert("Não foi possível excluir.")
+          }else{
+            location.replace("/genero")
+          }
+        }
+      )
+    }
+  </script>
+
+</body>
+</html>

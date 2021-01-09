@@ -128,6 +128,95 @@ Por fim é necessário fazer a View do principal (index) mostrar/chamar o templa
 
 Em seguida basta gerar o css para o template renderizado acima. Criar o diretório em *static*, nomeado como *css* e dentro criar os arquivos para os módulos.
 
+
+## 6) Criar 2ª aplicação (gênero)
+
+Uma aplicação (nome definido pela comunidade) se comporta como um módulo no Django. Já existem diversos módulos prontos que podem ser facilmente plugados no projeto.
+
+Deve-se iniciar a construção dela dentro do projeto:
+
+```python manage.py startapp genero```
+
+Essa aplicação será longa porque quase todos os conceitos do **CRUD** estarão aqui.
+
+Aqui será listado os mesmos passos iniciais criados no módulo principal:
+
+* ```auctusflixweb/settings.py``` adicionar **genero** no ```INSTALLED_APPS```.
+
+* ```auctusflixweb/urls.py``` incluir o caminho/rota do **genero**.
+
+* criar ```genero/urls.py``` e adicionar as configurações.
+
+* adicionar no arquivo ```genero/views.py``` o caminho para renderizar html.
+
+* criar templates do **genero**: criar ```templates/genero/genero.html```. Nesse item será adicionado o *forms* para cadastro.
+
+* editar ```templates/menu.html``` corrigindo a rota do genêro.
+
+* criar arquivo ```genero/forms.py``` (gerar o formulário).
+
+* importar e adicionar os formulários em ```genero/views.py```.
+
+* adicionar token no ```templates/genero/genero.html```
+
+* criar um ```static/css/crud.css``` para os gêneros e séries.
+
+* criar o modelo do **gênero**. Ao invés de usar o arquivo forms.py separado ele será criado dentro de ```genero/models.py``` pois assim ele será um forms com ID.
+
+* editar o ```genero/forms.py```.
+
+* migra a tabela dos modelos, ou seja, migrar aplicações pro BD (sqllite). É necessário criar um super usuário e executar os comandos:
+
+```
+python manage.py migrate
+python manage.py createsuperuser
+carlos
+meu_email@email.org
+senhaSecreta
+senhaSecreta
+```
+
+Agora acessando ```ip_rota/admin``` é possível ter acesso ao modo usuário. Em seguida vamos preparar (criar ddl da migração) o formulário e migrá-lo. Acontecerá dentro do diretório ```genero/migrations``` .
+
+```
+python manage.py makemigrations genero
+python manage.py migrate
+```
+
+* registrar o modelo para que ele aparece no site "ip_rota/admin". Para isso editar o arquivo ```genero/admin.py``` (adicionar modelos).
+
+* editar  ```genero/views.py``` para definir os métodos a serem utilizados.
+
+* inserir uma tabela em ```templates/genero/genero.html``` e adicionar lista de gêneros para ser mostrada no formulário em ```genero/views.py```.
+
+Aqui já é possível inserir um item com sucesso visualizando essa tabela na página de gênero.
+
+* adicionar a funcionalidade do botão de excluir. Será necessário construir um javaScript inserindo em ```templates/genero/genero.html```.
+
+* adicionar URL do método delete em ```genero/urls.py``` e em seguida adicionar o *delete* na view do genero.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Versão python
 
 É utilizada a versão 3.7.9 no SO Ubuntu 20.04.
