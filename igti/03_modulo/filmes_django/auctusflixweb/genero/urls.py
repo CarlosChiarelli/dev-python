@@ -6,5 +6,6 @@ from . import views
 # isso poderia ser uma expressão regular
 urlpatterns = [
     path('', views.cadastro, name='cadastro'),
-    path('delete/<id>', views.delete, name='delete')
+    path('delete/<id>', views.delete, name='delete'),
+    path('update/<id>', views.update, name='update')
 ]

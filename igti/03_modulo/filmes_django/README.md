@@ -195,7 +195,11 @@ Aqui já é possível inserir um item com sucesso visualizando essa tabela na p�
 
 * adicionar URL do método delete em ```genero/urls.py``` e em seguida adicionar o *delete* na view do genero.
 
+* criar parte de **alteração** dos dados começando com arquivo ```templates/genero/genero_upd.html```.
 
+* adicionar JavaScript para alteração em ```templates/genero/genero.html``` e adicionar esse item na ```urls.py``` e criá-lo na ```views.py```.
+
+**OBS:** é possível notar um problema na função **alterar**. Após alteração de um item, ao invés de voltar para página ```genero/``` volta para ```genero/update/id```.
 
 
 

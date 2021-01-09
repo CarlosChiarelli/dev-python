@@ -5,8 +5,8 @@
 <head>
   <meta charset="UTF-8">
   <title>AUCTUS.ai.Flix</title>
-  <link href="{% static 'css/crud.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/crud.css' %}" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -32,7 +32,7 @@
             {% for genero in generos_records %}
               <tr>
                 <td>{{ genero.descricao }}</td>
-                <td><button class="list-button editar-button">Alterar</button></td>
+                <td><button class="list-button editar-button" onclick="updateItem({{ genero.id }})">Alterar</button></td>
                 <td><button class="list-button apagar-button" onclick="deleteItem({{ genero.id }})">Excluir</button></td>
               </tr>
             {% endfor %}
@@ -44,7 +44,7 @@
         {% endif %}
       </div>
 
-      <div>
+      <div class="divForm">
         <form onsubmit="/genero" id="form-genero" method="post">
           <!-- vai buscar a informação que está em form e joga aqui dentro
           assim vários campos serão criados automaticamente  -->
@@ -61,6 +61,7 @@
   </main>
 
   <script>
+
     // Esse trecho é o JavaScript para fazer a deleção
     // Realiza o delete pelo ID do elemento (registro/linha)
     function deleteItem(id){
@@ -85,6 +86,13 @@
         }
       )
     }
+
+    // função que faz update (alteração) em um item
+    function updateItem(id){
+      // chama o formulário carregando o ID nessa página
+      location.replace("/genero/update/"+id);
+    }
+
   </script>
 
 </body>
