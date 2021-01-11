@@ -46,7 +46,7 @@ Alterações no arquivo ```app.py```:
 
 * será desenvolvida a exclusão de uma série.
 
-* a atualização de uma série (update / PUT) foi iniciado.
+* a atualização de uma série (update / PUT) foi iniciado mas não concluído (rota não foi criada, apenas método em ```show.py```).
 
 ## Documentação
 
