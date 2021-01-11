@@ -47,3 +47,14 @@ Alterações no arquivo ```app.py```:
 * será desenvolvida a exclusão de uma série.
 
 * a atualização de uma série (update / PUT) foi iniciado.
+
+## Documentação
+
+É necessário 2 documentos:
+
+1) desenvolvedores (devs)
+2) cliente da API (consumidores)
+
+O primeiro pode ser desenvolvido usando a lib ```mkdocs``` do python.
+
+Já o segundo é para os consumidores da API, explicando quais são os verbos disponíveis e como deve ser feita as requisições. É utilizado o **Swagger** e o documento pode aparecer no url base para ser consumido.
