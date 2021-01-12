@@ -59,3 +59,9 @@ Alterações no arquivo ```app.py```:
 O primeiro pode ser desenvolvido usando a lib ```mkdocs``` do python.
 
 Já o segundo é para os consumidores da API, explicando quais são os verbos disponíveis e como deve ser feita as requisições. É utilizado o **Swagger** e o documento pode aparecer no url base para ser consumido.
+
+## **Pendências**
+
+* fazer testes da API (unittest ou pytest)
+
+* fazer documentação testando o mkdocs
