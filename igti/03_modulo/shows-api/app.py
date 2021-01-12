@@ -34,7 +34,7 @@ def create_table():
 # utilizando a função abaixo
 @app.route('/', methods=['GET'])
 def home():
-    """Função executa quando aplico o Get rota da raiz."""
+    """Função executada quando aplico o Get na rota da raiz."""
     return 'API Funcionando', 200
 
 
@@ -42,7 +42,7 @@ def home():
 # incluindo o recurso show e a qual método ele vai responder
 @app.route('/show', methods=['POST'])
 def create_show():
-    """Cria um novo show com dados recebidos (post)."""
+    """Cria um novo show/série com dados recebidos (post)."""
     # obtém json
     request_data = request.get_json()
     # cria novo show dos dados obtidos

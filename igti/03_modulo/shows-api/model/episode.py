@@ -14,7 +14,7 @@ class EpisodeModel(alchemy.Model):
     name = alchemy.Column(alchemy.String(80))
     season = alchemy.Column(alchemy.Integer)
 
-    # colunas especial
+    # coluna especial
     # criar esse campo ele vai ligá-lo ao ID da tabela shows
     # vai ajudar a carregar os episódios da tabela show
     show_id = alchemy.Column(alchemy.Integer, alchemy.ForeignKey('shows.id'))

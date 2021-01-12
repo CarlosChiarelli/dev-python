@@ -52,8 +52,9 @@ Alterações no arquivo ```app.py```:
 
 É necessário 2 documentos:
 
-1) desenvolvedores (devs)
-2) cliente da API (consumidores)
+1. desenvolvedores (devs)
+
+2. cliente da API (consumidores)
 
 O primeiro pode ser desenvolvido usando a lib ```mkdocs``` do python.
 

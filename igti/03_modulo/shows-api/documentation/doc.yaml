@@ -1,0 +1,216 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Especificação para criação de séries e episódios
+  description: É possível bsucar séries pelo nome, incluir uma nova, deletar uma série por id ou incluir um episódio.
+  contact:
+    email: ca.chiarelli.97@gmail.com
+security:
+  - application:
+    - read
+    - write
+tags:
+  - name: Show
+    description: Tudo para manipular séries e seus episódios
+
+paths:
+  /show:
+    parameters:
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        style: simple
+        example: >-
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlRoaWFnbyIsInN1YiI6IjEzIiwianRpIjoiZDBlMGFkZDItOTlkMC00NWY1LThlYztY2FiYzIwZjkxMGYyIiwiaWF0IjoxNTAwMDMzMjE0LCJd3RWYWxpZGF0aW9uIjoiVXN1YXJpbyIsIm5iZiI6MTUwMDAzMzIxMywiZXhwIjoxNTAwMDMzMjczLCJpc3MiOiJJc3N1ZXIiLCJhdWQiOiJBdWRpZW5jZSJ9.SmjuyXgloA2RUhIlAEetrQwfC0EhBmhu-xOMzyY3Y_Q
+    post:
+      tags:
+        - Show
+      summary: Cria uma nova série
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_request_serie'
+      responses:
+        201:
+          description: Criado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response_serie'
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token inválido, inexistente ou expirado
+        500:
+          description: Erro no servidor
+  /show/{name}:
+    parameters:
+      - name: name
+        in: path
+        required: true
+        description: Nome de identificação da série
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        style: simple
+        example: >-
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlRoaWFnbyIsInN1YiI6IjEzIiwianRpIjoiZDBlMGFkZDItOTlkMC00NWY1LThlYztY2FiYzIwZjkxMGYyIiwiaWF0IjoxNTAwMDMzMjE0LCJd3RWYWxpZGF0aW9uIjoiVXN1YXJpbyIsIm5iZiI6MTUwMDAzMzIxMywiZXhwIjoxNTAwMDMzMjczLCJpc3MiOiJJc3N1ZXIiLCJhdWQiOiJBdWRpZW5jZSJ9.SmjuyXgloA2RUhIlAEetrQwfC0EhBmhu-xOMzyY3Y_Q
+    get:
+      tags:
+        - Show
+      summary: Recuperar uma série pelo name
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_response_serie'
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token inválido, inexistente ou expirado
+        404:
+          description: Recurso {id} não encontrado
+        500:
+          description: Erro no servidor
+  /show/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id de identificação da série
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        style: simple
+        example: >-
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlRoaWFnbyIsInN1YiI6IjEzIiwianRpIjoiZDBlMGFkZDItOTlkMC00NWY1LThlYztY2FiYzIwZjkxMGYyIiwiaWF0IjoxNTAwMDMzMjE0LCJd3RWYWxpZGF0aW9uIjoiVXN1YXJpbyIsIm5iZiI6MTUwMDAzMzIxMywiZXhwIjoxNTAwMDMzMjczLCJpc3MiOiJJc3N1ZXIiLCJhdWQiOiJBdWRpZW5jZSJ9.SmjuyXgloA2RUhIlAEetrQwfC0EhBmhu-xOMzyY3Y_Q
+    delete:
+      tags:
+        - Show
+      summary: Excluir uma série pelo id
+      responses:
+        204:
+          description: Excluído com sucesso
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token inválido, inexistente ou expirado
+        404:
+          description: Recurso {id} não encontrado
+        500:
+          description: Erro no servidor
+  /show/{name}/episode:
+    parameters:
+      - name: name
+        in: path
+        required: true
+        description: Nome de identificação da série
+        schema:
+          type: string
+      - name: token
+        in: header
+        description: Token JWT no header
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: string
+        style: simple
+        example: >-
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlRoaWFnbyIsInN1YiI6IjEzIiwianRpIjoiZDBlMGFkZDItOTlkMC00NWY1LThlYztY2FiYzIwZjkxMGYyIiwiaWF0IjoxNTAwMDMzMjE0LCJd3RWYWxpZGF0aW9uIjoiVXN1YXJpbyIsIm5iZiI6MTUwMDAzMzIxMywiZXhwIjoxNTAwMDMzMjczLCJpc3MiOiJJc3N1ZXIiLCJhdWQiOiJBdWRpZW5jZSJ9.SmjuyXgloA2RUhIlAEetrQwfC0EhBmhu-xOMzyY3Y_Q
+    post:
+      tags:
+        - Show
+      summary: Cria um novo episódio dentro de uma série
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_request_episode'
+      responses:
+        201:
+          description: Criado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_request_episode'
+        400:
+          description: Dados request enviados incorretos
+        401:
+          description: Token inválido, inexistente ou expirado
+        500:
+          description: Erro no servidor
+components:
+  schemas:
+    body_response_serie:
+      type: object
+      required:
+        - id
+        - name
+        - episodes
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Friends
+        episodes:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: O casamento vermelho
+              season:
+                type: integer
+                example: 2
+    body_request_serie:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: Game of Thrones
+    body_request_episode:
+      type: object
+      required:
+        - name
+        - season
+      properties:
+        name:
+          type: string
+          example: O casamento vermelho
+        season:
+          type: integer
+          example: 3
