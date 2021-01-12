@@ -1,0 +1,14 @@
+site_name: API de Séries
+theme: readthedocs
+
+repo_url: https://github.com/CarlosChiarelli/dev-python/tree/main/igti/03_modulo/shows-api
+
+nav:
+    - Principal: index.md
+    - Sobre: sobre.md
+    - Contribuições:
+        - Eventos: contribuir/eventos.md
+        - Tradução: contribuir/traducao.md
+
+extra_css:
+  - css/extra_css.css

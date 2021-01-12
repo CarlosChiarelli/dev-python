@@ -60,8 +60,22 @@ O primeiro pode ser desenvolvido usando a lib ```mkdocs``` do python.
 
 Já o segundo é para os consumidores da API, explicando quais são os verbos disponíveis e como deve ser feita as requisições. É utilizado o **Swagger** e o documento pode aparecer no url base para ser consumido.
 
+O comando abaixo gera as dependências do projeto.
+
+```pip freeze > requirements.txt```
+
+Será iniciada a documentação com **mkdocs.**
+
+```mkdocs new .```
+
+Para colocar a documentação no ar basta:
+
+```mkdocs serve```
+
+Então é possível abas com pasta editando o arquivo `mkdocs.yaml` e editando também o `.css`.
+
+Para hospedar numa página é possível gerando a pasta com `mkdocs build` que não será executado ou git pages.
+
 ## **Pendências**
 
 * fazer testes da API (unittest ou pytest)
-
-* fazer documentação testando o mkdocs
