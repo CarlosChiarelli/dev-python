@@ -76,6 +76,9 @@ Então é possível abas com pasta editando o arquivo `mkdocs.yaml` e editando t
 
 Para hospedar numa página é possível gerando a pasta com `mkdocs build` que não será executado ou git pages.
 
+Para obter a relação de dependências basta `pydep
+s -T png app.py`. É necessário que Graphviz esteja instalado na máquina (apt-get).
+
 ## **Pendências**
 
 * fazer testes da API (unittest ou pytest)

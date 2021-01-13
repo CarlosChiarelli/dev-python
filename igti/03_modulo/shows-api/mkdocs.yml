@@ -9,6 +9,7 @@ nav:
     - Contribuições:
         - Eventos: contribuir/eventos.md
         - Tradução: contribuir/traducao.md
+    - Dependências: dependencias.md
 
 extra_css:
   - css/extra_css.css
