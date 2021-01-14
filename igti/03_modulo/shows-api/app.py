@@ -51,7 +51,7 @@ def create_show():
     # entender porque utilizar o find_by_id
     print(new_show.id)
     result = show.ShowModel.find_by_id(new_show.id)
-    return jsonify(result.json())
+    return jsonify(result.json()), 201
 
 
 # buscar os dados de show (GET)
@@ -82,9 +82,8 @@ def create_episode_in_show(name):
                                            season=request_data['season'],
                                            show_id=parent.id)
         new_episode.save_to_db()
-        return new_episode.json()
-    else:
-        return {'message': 'Série não encontrada'}, 404
+        return new_episode.json(), 201
+    return {'message': 'Série não encontrada'}, 404
 
 
 # deletar uma série
@@ -93,8 +92,11 @@ def delete_show(id):
     """Deleta um série pelo ID."""
     # carrega a série para ser deletada
     show_deleted = show.ShowModel.find_by_id(id)
-    show_deleted.delete_from_db()
-    return {'message': 'Excluído com sucesso'}, 202
+    if show_deleted:
+        show_deleted.delete_from_db()
+        return {'message': 'Excluído com sucesso'}, 204
+    else:
+        return {'message': 'Série não encontrada'}, 404
 
 
 # rodar/executar aplicação Flask

@@ -1,41 +1,24 @@
-"""Teste de exemplo."""
+"""Testes organizados.
+
+Aqui contém testes segmentados e organizados para testar a API.
+"""
 from httpx import get, post, delete
-from json import loads
+from data import dic_got
 
-url_base = 'http://127.0.0.1:5000/'
+url_base = 'http://127.0.0.1:5000/show'
 
-request = get(url_base)
+# TESTE GET
+request = get(url_base+'/Game of Thrones')
 
-print(request)
+assert request.status_code == 200, 'Código de resposta diferente de 200'
+assert request.json() == dic_got, 'Algo errado no conteúdo'
 
-# testando GET
-print(f'GET Status 200: {request.status_code==200}')
-print(f'Conteúdo: {request.content}')
+# TESTE POST
+bad_serie = {'name': 'the 100'}
 
-# testando POST (inclui série)
-url_post = url_base + 'show'
-request = post(url_post, json={"name": "Game of Thrones"})
+request = post(url_base, json=bad_serie)
+assert request.status_code == 201, 'Código diferente de 201'
 
-print(request)
-print(f'POST Status: {request.status_code}')
-print(f'Conteúdo: {loads(request.content)}')
-
-# testando GET de procura/obtém série
-rota_get = url_base + 'show/'
-request = get(rota_get+'Friends')
-print(request)
-print(loads(request.content))
-
-request = get(rota_get+'Game of Thrones')
-print(request)
-print(loads(request.content))
-
-# testando POST para incluir episódio
-rota_add_ep = rota_get + 'Game of Thrones/episode'
-request = post(rota_add_ep, json={'name': 'Casamento vermelho', 'season': 3})
-print(f'{rota_add_ep}\n{request}\n{loads(request.content)}')
-
-# testando DELETE de uma série (deletar ID 1)
-rota_del = url_base + 'show/1'
-request = delete(rota_del)
-print(f'\nDELETE:{request}\n{loads(request.content)}')
+# TESTE DELETE
+request = delete(url_base + '/8')
+assert request.status_code == 204, 'Código diferente de 204'
