@@ -21,3 +21,7 @@ Após contruir os arquivos no diretório `tests/features` basta executar `behave
 O arquivo `tests/features/api.feature` é onde ficam escritas as regras de negócio (comportamento) que serão testadas.
 
 BDD não é teste, desta forma a diretório `tests/features` dveria estar na raiz.
+
+Após executar as 'features' e gerar uma pasta com 'reports':
+
+```behave --junit```
