@@ -245,3 +245,7 @@ Aqui já é possível inserir um item com sucesso visualizando essa tabela na p�
 * Criar método para update
 
 * Registrar url para update
+
+## Observações
+
+A funcionalidade de atualizar/alterar registro está quebrada para ambos os apps (gênero e séries) na aplicação.
