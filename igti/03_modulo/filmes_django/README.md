@@ -60,7 +60,7 @@ Dentro do auctusflixweb/settings.py é necessário dizer quais aplicações est�
 * incluir no arquivo: ```INSTALLED_APPS = ['principal']```
 
 
-# 3) HTML e CSS
+## 3) HTML e CSS
 
 A grosso modo podemos ver uma aplicação web como um corpo humano:
 
@@ -73,7 +73,7 @@ Este tópico é adicionado para completar o projeto.
 Será criado um diretório na raiz para alguns testes e anotações que não farão parte da aplicação em sí.
 
 
-# 4) Menu principal
+## 4) Menu principal
 
 Início do desenvolvimento do menu principal. Deve-se criar *static* e *templates* dentro do projeto **auctusflixweb**.
 
@@ -202,25 +202,46 @@ Aqui já é possível inserir um item com sucesso visualizando essa tabela na p�
 **OBS:** é possível notar um problema na função **alterar**. Após alteração de um item, ao invés de voltar para página ```genero/``` volta para ```genero/update/id```.
 
 
+## 7) Criar 3ª aplicação (série)
 
+* Criar módulo serie python manage.py startapp serie
 
+* Adicionar módulo 'serie' no settings do projeto principal
 
+* Registrar URL no projeto principal
 
+* Criar arquivo serie/urls.py e redirecionar para view
 
+* Criar método para cadastrar
 
+* Testar nova rota com o 'hello world!'
 
+* Criar template para o módulo 'serie'
 
+* Testar view módulo 'serie'
 
+* Alterar menu.html
 
+* Criar Model 'serie'
 
+* Registrar Model 'serie' no serie/admin.py
 
+* Criar a migration python manage.py makemigrations serie
 
+* Executar a migration python manage.py migrate
 
+* Criar Form 'serie'
 
+* Alterar o serie.html e testar o projeto
 
+* Alterar o método cadastrar da view para renderizar o form e os dados
 
+* Criar método para deletar
 
+* Registrar url para deletar
 
-## Versão python
+* Criar página update.html
 
-É utilizada a versão 3.7.9 no SO Ubuntu 20.04.
+* Criar método para update
+
+* Registrar url para update

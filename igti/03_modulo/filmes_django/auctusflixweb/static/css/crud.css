@@ -58,5 +58,6 @@ td, th {
 }
 
 .editar-button{
-  background: darkgreen;
+  /* background: darkgreen; */
+  background: darkseagreen;
 }
