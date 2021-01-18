@@ -1,0 +1,33 @@
+<testsuite errors="0" failures="1" hostname="carlos" name="api.Saber qual série eu tenho" skipped="0" tests="2" time="0.273298" timestamp="2021-01-18T16:09:33.937774"><testcase classname="api.Saber qual série eu tenho" name="No primeiro uso do sistema não devem existir séries registradas" status="passed" time="0.039067"><system-out>
+<![CDATA[
+@scenario.begin
+  Cenário: No primeiro uso do sistema não devem existir séries registradas
+    Quando verificar minha série em "/show/name" ... passed in 0.039s
+    Então não devo ter nenhuma série guardada ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="api.Saber qual série eu tenho" name="Ver série registrada" status="failed" time="0.234231"><failure message="{'episodes': [{'name': 'Casamento vermelho', 'season': 3}, {'name': 'Casamento vermelho', 'season': 3}, {'name': 'Casamento vermelho', 'season': 3}, {'name': 'Casamento vermelho', 'season': 3}], 'id': 3, 'name': 'Game of Thrones'}" type="AssertionError">
+<![CDATA[
+Failing step: Então devo ter a seguinte série armazenada ... failed in 0.001s
+  | name              | episodes                                        |
+  | 'Game of Thrones' | [{"name": "O casamento vermelho", "season": 2}] |
+Location: features/api.feature:17
+Assertion Failed: {'episodes': [{'name': 'Casamento vermelho', 'season': 3}, {'name': 'Casamento vermelho', 'season': 3}, {'name': 'Casamento vermelho', 'season': 3}, {'name': 'Casamento vermelho', 'season': 3}], 'id': 3, 'name': 'Game of Thrones'}]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+  Cenário: Ver série registrada
+    Dado que existe uma série ... passed in 0.192s
+      | name              | episodes                                        |
+      | 'Game of Thrones' | [{"name": "O casamento vermelho", "season": 2}] |
+    Quando verificar minha série em "/show/name" ... passed in 0.042s
+    Então devo ter a seguinte série armazenada ... failed in 0.001s
+      | name              | episodes                                        |
+      | 'Game of Thrones' | [{"name": "O casamento vermelho", "season": 2}] |
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
