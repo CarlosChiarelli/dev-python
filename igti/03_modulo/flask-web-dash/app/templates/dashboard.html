@@ -176,16 +176,12 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="card-icon">
                     <i class="material-icons">content_copy</i>
                   </div>
-                  <p class="card-category">Used Space</p>
-                  <h3 class="card-title">49/50
-                    <small>GB</small>
+                  <!-- ALTERAR TEXTO -->
+                  <p class="card-category">Temperatura Média</p>
+                  <!-- ALTERAR VALORES DINÂMICOS -->
+                  <h3 class="card-title">{{dados[0]['temperatura']['mean']}}
+                    <small>°C</small>
                   </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons text-danger">warning</i>
-                    <a href="javascript:;">Get More Space...</a>
-                  </div>
                 </div>
               </div>
             </div>
@@ -193,15 +189,12 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">store</i>
+                    <i class="material-icons">ac_unit</i>
                   </div>
-                  <p class="card-category">Revenue</p>
-                  <h3 class="card-title">$34,245</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">date_range</i> Last 24 Hours
-                  </div>
+                  <p class="card-category">Temperatura Mínima</p>
+                  <h3 class="card-title">{{dados[0]['temperatura']['min']}}
+                    <small>°C</small>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -209,15 +202,12 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">info_outline</i>
+                    <i class="material-icons">local_fire_department</i>
                   </div>
-                  <p class="card-category">Fixed Issues</p>
-                  <h3 class="card-title">75</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">local_offer</i> Tracked from Github
-                  </div>
+                  <p class="card-category">Temperatura Máxima</p>
+                  <h3 class="card-title">{{dados[0]['temperatura']['max']}}
+                    <small>°C</small>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -228,7 +218,8 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="col-md-12">
               <div class="card card-chart">
                 <div class="card-header card-header-success">
-                  <div class="ct-chart" id="dailySalesChart"></div>
+                  <!-- ALTERAR O ID DO GRÁFICO DINÂMICO (local do gráfico) -->
+                  <div class="ct-chart" id="temperaturaChart"></div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">Daily Sales</h4>
@@ -253,36 +244,18 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Salary</th>
-                      <th>Country</th>
+                      <th>Data</th>
+                      <th>Temperatura</th>
+                      <th>Classificação</th>
                     </thead>
                     <tbody>
+                      {% for row in dados[3].itertuples() %}
                       <tr>
-                        <td>1</td>
-                        <td>Dakota Rice</td>
-                        <td>$36,738</td>
-                        <td>Niger</td>
+                        <td>{{row.date}}</td>
+                        <td>{{row.temperatura}}</td>
+                        <td>{{row.classification}}</td>
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Minerva Hooper</td>
-                        <td>$23,789</td>
-                        <td>Curaçao</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Sage Rodriguez</td>
-                        <td>$56,142</td>
-                        <td>Netherlands</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Philip Chaney</td>
-                        <td>$38,735</td>
-                        <td>Korea, South</td>
-                      </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>
@@ -613,7 +586,20 @@ The above copyright notice and this permission notice shall be included in all c
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
+
+      // ALTERAR AQUI O GRÁFICO DINÂMICO
+      // md.initDashboardPageCharts();
+      dados_grafico = {
+        // ALTERAR DADOS RECEBIDOS PELAS LISTAS
+        labels: ['01/01/2020', '02/01/2020', '03/01/2020', '04/01/2020', '05/01/2020'],
+        series: [
+          [12.1, 17.2, 7.5, 6.4, 2.8]
+        ]
+      };
+
+      // criando gráfico de linha
+      // defininfo tipo do gráfico, local na página web (ID) e dados a exibir
+      new Chartist.Line("#temperaturaChart", dados_grafico);
 
     });
   </script>
