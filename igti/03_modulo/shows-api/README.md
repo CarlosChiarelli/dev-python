@@ -78,6 +78,10 @@ Para hospedar numa página é possível gerando a pasta com `mkdocs build` que n
 
 Para obter a relação de dependências basta `pydeps -T png app.py`. É necessário que Graphviz esteja instalado na máquina (apt-get).
 
+### Swagger e Flask
+
+
+
 ## Testes
 
 Por fim são realizados testes com `pytest` e `pytest-sugar`.
