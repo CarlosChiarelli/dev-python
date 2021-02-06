@@ -1,0 +1,9 @@
+num_gravid
+glicose
+pressao
+espes_tricep
+insulina
+imc
+hist_diab
+idade
+tem_diab
