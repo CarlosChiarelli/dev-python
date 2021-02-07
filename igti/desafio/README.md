@@ -6,21 +6,19 @@ Trata-se de uma aplicação web que possibilita prever se um determinado indiví
 
 * ds: data science (exploração, análise e modelagem preditiva dos dados)
 
-* ...
+* templates: artefatos html (página web)
 
-## DS: execução do projeto de ML
+* run.py : aplicação Flask
 
-Para treinamento e 'dump' (salvar) do modelo predito é necessário os seguintes passos:
+## Execução do projeto de ML
+
+Passos para colocar a aplicação "no ar" e utilizá-la.
 
 ```
 pip install -r requirements.txt
-cd app/ds/src
-python main.py
-cd ../../
+cd app
+python app/run.py
 ```
-
-Assim o modelo será treinado e salvo em `output`.
-
 
 # **Enunciado**
 

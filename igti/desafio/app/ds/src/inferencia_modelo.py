@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 from joblib import dump, load
-from fonte_dados import FonteDados
+from .fonte_dados import FonteDados
 from .preprocessamento import Preprocessamento
 from .metricas import Metricas
 from .experimentos import Experimentos
@@ -10,10 +10,13 @@ from .treinamento_modelo import TreinamentoModelo
 
 
 class InferenciaModelo:
-    def __init__(self):
+    def __init__(self, input_web=None):
         self.modelo = None
         self.dados_prever = None
         self.predito = None
+
+        self.input_web = np.asarray(input_web).reshape(1, 8)
+        self.input_web = FonteDados().input_web(self.input_web)
 
     def predicao(self):
         """
@@ -23,11 +26,11 @@ class InferenciaModelo:
 
         # carregar o modelo treinado
         print('Carregando o modelo', '\n\n')
-        self.modelo = load('../output/modelo.pkl')
+        self.modelo = load('ds/output/modelo.pkl')
 
         # ler os dados de TESTE
-        print('Carregando dados', '\n\n')
-        X_teste, y_teste = FonteDados().leitura_dados(treino=False)
+        print(f'Carregando dados: {self.input_web}\n\n')
+        X_teste = self.input_web
 
         print('Pré-processamento', '\n\n')
         X_teste = self.modelo['preprocess'].processo(
@@ -37,12 +40,4 @@ class InferenciaModelo:
         print('Predição', '\n\n')
         y_pred = self.modelo['model_obj'].predict(X_teste)
 
-        # salvando resultado predito
-        print('Salvando arquivos', '\n\n')
-        self.dados_prever = X_teste
-        self.predito = pd.DataFrame(y_pred)
-
-        submeter = self.predito.copy()
-        submeter.to_csv('../output/predito.csv', index=False)
-
-        return submeter
+        return y_pred[0]

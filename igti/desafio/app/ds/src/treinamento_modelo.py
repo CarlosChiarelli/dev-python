@@ -56,7 +56,7 @@ class TreinamentoModelo:
         print(model)
 
         # salvando modelo treinado com informacoes
-        dump(model, '../output/modelo.pkl')
+        dump(model, 'ds/output/modelo.pkl')
 
         # retorna o dicionario de modelo
         return model

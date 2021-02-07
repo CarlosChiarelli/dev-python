@@ -1,18 +1,18 @@
 import numpy as np
 import joblib
+from os.path import isfile
 from flask import Flask, request, jsonify, render_template
+from ds.src.inferencia_modelo import InferenciaModelo
+from ds.src.run_pipeline import main as run_pipeline_data
 
 app = Flask(__name__)
 
 
-def previsao_diabetes(lista_valores_formuloario):
-    prever = naoSei.reshape(1, 8)  # transforma os valores do formulário
+def previsao_diabetes(valores_list):
+    """Realiza a predição dos dados inseridos no formulário."""
+    resultado = InferenciaModelo(valores_list).predicao()
 
-    # realiza a carga do modelo salvo
-    modelo_salvo = joblib.load('ds/output/modelo.pkl')
-
-    resultado = naoSei.predict(prever)  # aplica previsão
-    return resultado[0]
+    return resultado
 
 
 @app.route('/')
@@ -30,19 +30,21 @@ def result():
         # converte dados recebidos para lista
         lista_formulario = list(lista_formulario.values())
 
-        # lista_formulario = list(map(naoSei))
-        #
-        # resultado = previsao_diabetes(lista_formulario)
-        #
-        # if int(resultado) == 1:
-        #     previsao = 'Possui diabetes'
-        # else:
-        #     previsao = 'Nao possui diabetes'
+        resultado = previsao_diabetes(lista_formulario)
+
+        if int(resultado) == 1:
+            previsao = 'Possui diabetes'
+        else:
+            previsao = 'Nao possui diabetes'
 
         # retorna o resultado para uma página html
-        previsao = 'tem diabetes'
         return render_template('resultado.html', previsao=previsao)
 
 
 if __name__ == '__main__':
+
+    # se o modelo de produção não foi gerado, então todo pipeline é executado
+    if not isfile('ds/output/modelo.pkl'):
+        run_pipeline_data()
+
     app.run(debug=True)

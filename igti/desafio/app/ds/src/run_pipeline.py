@@ -1,4 +1,4 @@
-"""Pré-processa os daods, treina e salva o modelo."""
+"""Pré-processa os dados, treina e salva o modelo."""
 from .experimentos import Experimentos
 from .treinamento_modelo import TreinamentoModelo
 from .inferencia_modelo import InferenciaModelo

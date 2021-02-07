@@ -3,7 +3,7 @@
 Aqui faço o split TREINO/TESTE.
 """
 
-from pandas import read_csv
+from pandas import read_csv, DataFrame
 from numpy import loadtxt
 from sklearn.model_selection import train_test_split
 
@@ -13,8 +13,9 @@ class FonteDados:
 
     def __init__(self):
         """Criando variáveis, definir os caminhos dados de treino e teste."""
-        self.path_data = '../data/pima-indians-diabetes.csv'
-        self.path_cols = '../data/nomes_colunas.txt'
+        # self.path_data = '../data/pima-indians-diabetes.csv'
+        self.path_data = 'ds/data/pima-indians-diabetes.csv'
+        self.path_cols = 'ds/data/nomes_colunas.txt'
         self.target = 'tem_diab'
 
     # definir se a etapa é dados de treino ou teste
@@ -68,3 +69,11 @@ class FonteDados:
             )
 
             return X_test, y_test
+
+    def input_web(self, input):
+        """Converte os dados de array para DataFrame."""
+
+        cols = loadtxt(self.path_cols, dtype=str).tolist()
+        df = DataFrame(input, columns=cols[:-1])
+
+        return df

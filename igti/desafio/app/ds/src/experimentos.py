@@ -100,7 +100,7 @@ class Experimentos:
             # vejo as métricas (sempre calculadas no teste)
             metrics = Metricas().calcula_classif(y_teste, Series(y_pred))
             DataFrame.from_dict(metrics, orient='index').to_csv(
-                '../output/metrica_' + model + '.csv'
+                'ds/output/metrica_' + model + '.csv'
             )
 
             self.metricas_models[model] = metrics
