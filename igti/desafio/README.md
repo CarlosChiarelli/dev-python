@@ -8,7 +8,18 @@ Trata-se de uma aplicação web que possibilita prever se um determinado indiví
 
 * ...
 
+## DS: execução do projeto de ML
 
+Para treinamento e 'dump' (salvar) do modelo predito é necessário os seguintes passos:
+
+```
+pip install -r requirements.txt
+cd app/ds/src
+python main.py
+cd ../../
+```
+
+Assim o modelo será treinado e salvo em `output`.
 
 
 # **Enunciado**

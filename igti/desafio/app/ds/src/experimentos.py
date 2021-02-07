@@ -13,9 +13,9 @@ from catboost import CatBoostClassifier
 from sklearn.neural_network import MLPClassifier
 from pandas import DataFrame
 
-from preprocessamento import Preprocessamento
-from fonte_dados import FonteDados
-from metricas import Metricas
+from .preprocessamento import Preprocessamento
+from .fonte_dados import FonteDados
+from .metricas import Metricas
 
 
 class Experimentos:

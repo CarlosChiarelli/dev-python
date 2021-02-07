@@ -3,10 +3,10 @@ import pandas as pd
 import numpy as np
 from joblib import dump, load
 from fonte_dados import FonteDados
-from preprocessamento import Preprocessamento
-from metricas import Metricas
-from experimentos import Experimentos
-from treinamento_modelo import TreinamentoModelo
+from .preprocessamento import Preprocessamento
+from .metricas import Metricas
+from .experimentos import Experimentos
+from .treinamento_modelo import TreinamentoModelo
 
 
 class InferenciaModelo:

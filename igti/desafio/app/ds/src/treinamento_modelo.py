@@ -7,9 +7,9 @@ import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from joblib import dump, load
-from fonte_dados import FonteDados
-from preprocessamento import Preprocessamento
-from experimentos import Experimentos
+from .fonte_dados import FonteDados
+from .preprocessamento import Preprocessamento
+from .experimentos import Experimentos
 
 
 class TreinamentoModelo:
